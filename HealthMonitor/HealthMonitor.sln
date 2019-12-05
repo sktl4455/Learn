@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthMonitor", "HealthMonitor.csproj", "{A45ED3E6-CC87-41FE-A931-C74EFF6B6A89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthMonitor", "HealthMonitor.csproj", "{694D4F8F-5DFA-4BEA-8A93-3844ABFEE053}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A45ED3E6-CC87-41FE-A931-C74EFF6B6A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A45ED3E6-CC87-41FE-A931-C74EFF6B6A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A45ED3E6-CC87-41FE-A931-C74EFF6B6A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A45ED3E6-CC87-41FE-A931-C74EFF6B6A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694D4F8F-5DFA-4BEA-8A93-3844ABFEE053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694D4F8F-5DFA-4BEA-8A93-3844ABFEE053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694D4F8F-5DFA-4BEA-8A93-3844ABFEE053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694D4F8F-5DFA-4BEA-8A93-3844ABFEE053}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AAA7B3F4-EFF5-4878-B765-F4A6766F13E1}
+		SolutionGuid = {E39741E7-65B6-4C1C-8C81-D37C645F7DFF}
 	EndGlobalSection
 EndGlobal
