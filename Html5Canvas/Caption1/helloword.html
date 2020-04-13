@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello world</title>
+    </head>
+    <body>
+        <div style="position: absolute; top: 50px; left: 50px;">
+            <canvas id="canvasOne" width="500" height="300">
+                浏览器不支持
+            </canvas>
+        </div>
+    </body>
+    <script>
+        window.addEventListener("load",eventWindowLoaded,false);
+        function eventWindowLoaded()
+        {
+            canvansApp();
+        }
+        function canvansApp()
+        {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            function drawnScreen()
+            {
+                // 背景
+                context.fillStyle = "#ffffaa";
+                context.fillRect(0,0,500,300);
+
+                // 文字
+                context.fillStyle = "#000000";
+                context.font = "20px _sans";
+                context.textBaseLine = "top";
+                context.fillText("Hello World!",195,80);
+
+                // 图像
+                // var helloWorldImage = new Image();
+                // helloWorldImage.src = "Helloworld.gif";
+
+                // 边框
+                context.strokeStyle = "#000000";
+                context.strokeRect(5,5,490,290);
+            }
+            drawnScreen();
+        }
+
+    </script>
+</html>

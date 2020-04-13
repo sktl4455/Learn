@@ -4,7 +4,247 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1>菲律宾黑名单检查系统</h1>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">输入检查姓名拼音</span>
+            </div>
+            <input type="text" id="inputName" style="max-width: 400px" onkeyup="this.value=this.value.replace(/[^ a-zA-Z]/g,'')" class="form-control" onchange="InputName()" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <button type="button" onclick="DisplayAll" class="btn btn-primary">显示黑名单</button>
+            <button type="button" onclick="clearn" class="btn btn-primary">清空</button>
+        </div>
+        <ul class="list-group" id='namelist'>
+        </ul>
+    </div>
+    <script>
+var allName = ['CAI LIJIAN',
+'CAI YUQING',
+'CHEN BING',
+'CHEN CAIXIA',
+'CHEN DEJIN',
+'CHEN JIAXIN',
+'CHEN JIN',
+'CHEN LIMING',
+'CHEN LIN',
+'CHEN LING',
+'CHEN LIXIA',
+'CHEN LIXUAN',
+'CHEN MIN',
+'CHEN MING',
+'CHEN QI',
+'CHEN QIANGZHU',
+'CHEN SHIXIONG',
+'CHEN SHIYUN',
+'CHEN WEI',
+'CHEN SING',
+'CHEN XIAO',
+'CHEN XIUPING',
+'CHEN YANFANG',
+'CHEN YIAO',
+'CHEN YINGYING',
+'CHEN YIQI',
+'CHEN YU',
+'CHEN YUE',
+'FENG LI',
+'FANG YI',
+'GAO YUAN',
+'GUO JING',
+'GUO LIYUN',
+'HE LIANGLIANG',
+'HE LIUZHU',
+'HU WEN',
+'HUANG GUOQIANG',
+'HUANG LIN',
+'HUANG SHUAI',
+'JIN WEILI',
+'JIANG HAIYANG',
+'JIANG QIN',
+'JIANG WEI',
+'JIANG YU',
+'JING LI',
+'JING YU',
+'LAO XIE',
+'LAN CHEN',
+'LI ANNI',
+'LI BO',
+'LI BOWEN',
+'LI HUISIE',
+'LI DONGYANG',
+'LI JINFENG',
+'LI JING',
+'LI LIHUA',
+'LI LIN',
+'LI MAN',
+'LI PING',
+'LI QIANG',
+'LI QINGHE',
+'LI SHA',
+'LI TING',
+'LI WEI',
+'LI WUCHEN',
+'LI XING',
+'LI XIUQIN',
+'LI XUE',
+'LI YANJUN',
+'LI YUAN',
+'LI YUE',
+'LI ZHICHAO',
+'LIANG CHEN',
+'LIANG DI',
+'LIN QINGFENG',
+'LIN SHUMIN',
+'LIN TINGTING',
+'LIN WENCAI',
+'LIU BAOZHU',
+'LIU DONG',
+'LIU HUI',
+'LIU HUIYANG',
+'LIU JIE',
+'LIU JING',
+'LIU JINLIANG',
+'LIU XIN',
+'LIU YAN',
+'LIU YUE',
+'LU LIN',
+'LU QI',
+'QIU YAN',
+'SU YUTING',
+'SUN ZHIGANG',
+'TANG MIN',
+'WANG BIN',
+'WANG HAIYU',
+'WANG LILI',
+'WANG PEIFANG',
+'WANG PENG',
+'WANG QIAN',
+'WANG TAO',
+'WANG XIUMEI',
+'WANG YAN',
+'WANG YANG',
+'WANG YUNFEI',
+'WANG ZHENG',
+'WANG SUE',
+'WEI LI',
+'WENG PENGCHAO',
+'WU HUIHUA',
+'WU LIANG',
+'WU LINA',
+'WU LIPING',
+'WU PING',
+'WU WEI ',
+'WU YUTONG',
+'WU YUTING',
+'RUAN HUBIN',
+'XIA FANG',
+'XIA YU',
+'XIANG DONG',
+'XU SHUPING',
+'XU YAQIN',
+'XU YING',
+'YAN XIAOWEI',
+'YANG JIAN',
+'YANG SHUWEN',
+'YANG XIANGHAI',
+'YANG XIA',
+'YANG YANG',
+'YANG YI',
+'YANG ZI',
+'YE JIAN HUA',
+'YI YANG',
+'YU HAO',
+'YU HAO',
+'YU JIANG',
+'YU QIANGXIANG',
+'YU BING',
+'YU QIANXIANG',
+'YUE LI',
+'YU ZHOU',
+'YANG GUANGHUI',
+'ZENG JIANNING',
+'ZHANG BEI',
+'ZHANG HONG',
+'ZHANG HUA',
+'ZHANG LEI',
+'ZHANG LI ',
+'ZHANG LIANG',
+'ZHANG LIPING',
+'ZHANG MEI',
+'ZHANG MING',
+'ZHANG SHUDI',
+'ZHANG WEI',
+'ZHANG/WENXIAO',
+'ZHANG XIAOHUI',
+'ZHANG YING',
+'ZHANG YU',
+'ZHANG ZHE',
+'ZHANG ZHIMING',
+'ZHAO JIA',     
+'ZHENG BEI',
+'ZHENG DAN',
+'ZHENG HONGXIA',
+'ZHENG HUA',
+'ZHENG MEILIN',
+'ZHOU LIQIN',
+'ZHOU WEI',
+'ZHOU YU',
+'ZHOU ZHIJIAN',  
+'ZHU JUN',
+'ZHUANG LIHUA',
+'ZHUANG WEI',
+'CHEN YUE',
+];
+var list = [];
+function InputName()
+{
+    // list.push(document.getElementById("inputName").value);
+    var name = document.getElementById("inputName").value.toUpperCase();
+    list = [];
+    // 匹配查找
+    allName.forEach(element => {
+        if(element.indexOf(name) != -1)
+        {
+            // 插入到当前列表中
+            list.push(element);
+        }
+    });
+    var ul = document.getElementById("namelist");
+    ul.innerHTML = "";
+
+    if(list.length == 0)
+    {
+        var li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = "恭喜: 未在黑名单上找到对应的名称!";
+            ul.appendChild(li);
+    }else
+    {
+        list.forEach(element => {
+            var li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = element;
+            ul.appendChild(li);
+        });
+    }
+};
+
+function DisplayAll()
+{
+    var ul = document.getElementById("namelist");
+    ul.innerHTML = "";
+    allName.forEach(element => {
+            var li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = element;
+            ul.appendChild(li);
+        });
+}
+
+function clearn()
+{
+    list=[];
+    var ul = document.getElementById("namelist");
+    ul.innerHTML = "";
+}
+
+    </script>
